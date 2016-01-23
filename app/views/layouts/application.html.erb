@@ -8,10 +8,15 @@
 </head>
 <body>
   <div class="flash-container">
-    <p class="alert alert-success"><%= notice %></p>
-    <p class="alert alert-danger"><%= alert %></p>
+    <% if notice %>
+      <p class="alert alert-success"><%= notice %></p>
+    <% end %>
+    <% if alert %>
+      <p class="alert alert-danger"><%= alert %></p>
+    <% end %>
   </div>
-<%= yield %>
-
+  <div class="container-fluid">
+    <%= yield %>
+  </div>
 </body>
 </html>

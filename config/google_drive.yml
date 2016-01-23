@@ -1,0 +1,4 @@
+client_id: <%= ENV['GOOGLE_CLIENT_ID'] %>
+client_secret: <%= ENV['GOOGLE_CLIENT_SECRET'] %>
+access_token: <%= ENV['GOOGLE_ACCESS_TOKEN'] %>
+refresh_token: <%= ENV['GOOGLE_REFRESH_TOKEN'] %>

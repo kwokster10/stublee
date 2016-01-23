@@ -23,11 +23,18 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
-# Use Devise for user management
+# Use Devise for user management: https://github.com/plataformatec/devise
 gem 'devise'
 
-# Use CanCan to define user abilities
+# Use CanCan to define user abilities: https://github.com/ryanb/cancan
 gem 'cancan'
+
+# User Paperclip for file attachment management: https://github.com/thoughtbot/paperclip
+gem 'paperclip', '~> 4.3'
+# Paperclip file storage with Google Drive: https://github.com/shoaibmalik786/paperclip-googledrive-new
+gem 'paperclip-googledrive-new'
+# Dependency of above. Version specified due to rake error
+gem 'google-api-client', '0.8.6'
 
 # Use Bootstrap for styling
 gem 'bootstrap-sass', '~> 3.3.6'

@@ -25,10 +25,21 @@
 1. Set up [Bootstrap](https://github.com/twbs/bootstrap-sass) if desired.
   - add `gem 'bootstrap-sass', '~> 3.3.6'`
   - run `bundle install`
-1. Decide other tables needed for app and [Active Record Associations](http://guides.rubyonrails.org/association_basics.html).
+1. Add gems to allow of image processing and storage
+  - `brew install imagemagick`, an [image processor](http://www.imagemagick.org/script/index.php) needed for [Paperclip](https://github.com/thoughtbot/paperclip)
+  - `gem 'paperclip', '~> 4.3'` for file attachment management
+  - `gem 'paperclip-googledrive-new'` for [file storage with Google Drive](https://github.com/shoaibmalik786/paperclip-googledrive-new). *Note:* I had an issue with the newest version of a gem dependency but using an older version worked. `gem 'google-api-client', '0.8.6'` was added to the Gemfile to fix the `rake google_drive:authorize` task error `LoadError: cannot load such file -- google/api_client`. 
+  - set up credentials via [Google Developers Console](https://console.developers.google.com/home) per instructions from paperclip-googledrive gem above
+  - `bundle install`
+1. Decide other tables needed for app and [Active Record Associations](http://guides.rubyonrails.org/association_basics.html). Add associations to model after it is generated.
   - Users has_many :comments, has_many :ratings (admin only)
-  - Movies table (title, release date:date, watched_day:date, director_id, rating_id), belongs_to :director, has_one :rating, has_many :comments
+  - Movies table (title, release date:date, watched_day:date, image:attachment director_id, rating_id), belongs_to :director, has_one :rating, has_many :comments
+      - `rails g model Movie title release_date:date watched_day:date image:attachment director_id:integer:index rating_id:integer:index`
   - Directors table (name), has_many :movies
-  - Ratings table (critique:text, stars:integer, draft:boolean, movie_id, user_id), belongs_to :user, belongs_to :movie
+      - `rails g model Director name`
+  - Ratings table (content:text, stars:integer, draft:boolean, movie_id, user_id), belongs_to :user, belongs_to :movie
+      - `rails g model Rating content:text stars:integer draft:boolean movie_id:integer:index, user_id:integer:index`
   - Comments table (note:text, user_id, movie_id), belongs_to :user, belongs_to :movie
-1. Integrate [Dropbox for photos?](http://stackoverflow.com/questions/24715176/rails-4-paperclip-dropbox-production-issue)
+      - `rails g model Comment note:text user_id:integer:index movie_id:integer:index`
+  - check each of the migrations for any errors befor running `rake db:migrate`
+
