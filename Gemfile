@@ -41,6 +41,9 @@ gem 'bootstrap-sass', '~> 3.3.6'
 # Use Autoprefixer to add proper vendor prefixes to CSS
 gem 'autoprefixer-rails'
 
+# Use font awesome for star icon
+gem 'font-awesome-sass'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -53,6 +56,9 @@ gem 'autoprefixer-rails'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+
+  # Use rspec for tests
+  gem 'rspec-rails'
 end
 
 group :development do
@@ -61,5 +67,10 @@ group :development do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+
+  # Use FactoryGirl for test fixtures: https://github.com/thoughtbot/factory_girl_rails
+  gem 'factory_girl_rails', '~> 4.0'
+  # Use Faker to generate fake data for fixtures: https://github.com/stympy/faker
+  gem 'faker'
 end
 

@@ -21,6 +21,7 @@
 1. Use CanCan to define abilities of admin versus non-admin.
   - add `gem 'cancan'` to *Gemfile*
   - run `bundle install`
+  - `rails g cancan:ability`
   - check out [CanCan Gettting Started docs](https://github.com/ryanb/cancan#getting-started) for more setup instructions on defining abilities
 1. Set up [Bootstrap](https://github.com/twbs/bootstrap-sass) if desired.
   - add `gem 'bootstrap-sass', '~> 3.3.6'`
@@ -33,13 +34,23 @@
   - `bundle install`
 1. Decide other tables needed for app and [Active Record Associations](http://guides.rubyonrails.org/association_basics.html). Add associations to model after it is generated.
   - Users has_many :comments, has_many :ratings (admin only)
-  - Movies table (title, release date:date, watched_day:date, image:attachment director_id, rating_id), belongs_to :director, has_one :rating, has_many :comments
+  - Movies table (title, release date:date, watched_day:date, image:attachment director_id), belongs_to :director, has_one :rating, has_many :comments
       - `rails g model Movie title release_date:date watched_day:date image:attachment director_id:integer:index rating_id:integer:index`
   - Directors table (name), has_many :movies
       - `rails g model Director name`
-  - Ratings table (content:text, stars:integer, draft:boolean, movie_id, user_id), belongs_to :user, belongs_to :movie
-      - `rails g model Rating content:text stars:integer draft:boolean movie_id:integer:index, user_id:integer:index`
+  - Ratings table (content:text, stars:decimal, draft:boolean, movie_id, user_id), belongs_to :user, belongs_to :movie
+      - `rails g model Rating content:text stars:decimal draft:boolean movie_id:integer:index, user_id:integer:index`
   - Comments table (note:text, user_id, movie_id), belongs_to :user, belongs_to :movie
       - `rails g model Comment note:text user_id:integer:index movie_id:integer:index`
   - check each of the migrations for any errors befor running `rake db:migrate`
-
+1. Add [Rspec](https://github.com/rspec/rspec-rails) for testing if desired
+  - `gem 'rspec-rails'` within development and test groups
+  - `gem 'factory_girl_rails', '~> 4.0'` within test group to create test fixtures
+  - `gem 'faker'` to generate fake data for fixtures
+  - `bundle install`
+  - `rails generate rspec:install`
+  - delete test folder if not using [Rails default test suite](https://github.com/test-unit/test-unit`)
+1. Add [Font Awesome](http://fortawesome.github.io/Font-Awesome/get-started/) for rating stars
+  - `gem 'font-awesome-sass'`
+  - `bundle install`
+  - add `@import "font-awesome-sprockets"; @import "font-awesome";` to *application.css.scss* or whatever your css extension is

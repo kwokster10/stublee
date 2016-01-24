@@ -1,0 +1,9 @@
+<h2><%= rating.movie.name %></h2>
+<p><%= rating.content %></p>
+<span><%= rating.stars %> out of 5</span>
+<span>
+  <%= stars_helper(rating) %>
+</span>
+<p>Status:
+  <span><%= status_helper(rating.draft) %></span>
+</p>

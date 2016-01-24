@@ -1,0 +1,15 @@
+<h2><%= movie.title %></h2>
+<div class="movie-image">
+  <%= image_tag movie.image.url(:medium) %>
+</div>
+<div class="movie-details">
+  <p>Director: 
+    <span><%= movie.director.name %></span>
+  </p>
+  <p>Released: 
+    <span><%= movie.release_date %></span>
+  </p>
+  <p>Watched On: 
+    <span><%= movie.watched_day %></span>
+  </p>
+</div>
