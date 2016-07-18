@@ -26,8 +26,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use Devise for user management: https://github.com/plataformatec/devise
 gem 'devise'
 
-# Use CanCan to define user abilities: https://github.com/ryanb/cancan
-gem 'cancan'
+# Use Pundit to define user authorizations: https://github.com/elabs/pundit
+gem 'pundit', '~> 1.1.0'
 
 # User Paperclip for file attachment management: https://github.com/thoughtbot/paperclip
 gem 'paperclip', '~> 4.3'
