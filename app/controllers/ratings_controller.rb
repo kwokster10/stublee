@@ -6,4 +6,8 @@ class RatingsController < ApplicationController
       @ratings = Rating.published
     # end
   end
+
+  def create
+    byebug
+  end
 end

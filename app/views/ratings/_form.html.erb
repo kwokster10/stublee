@@ -1,0 +1,19 @@
+<%= form_for :rating, action: :create, controller: 'ratings', url: ratings_path, remote: true do |f| %>
+  <%= f.hidden_field :user_id %>
+  <%= f.label :content %>
+  <%= f.text_field :content %>
+  <%= f.label :stars %>
+  <%= f.number_field :stars %>
+  <%= f.label :draft %>
+  <%= f.check_box :draft %>
+    <%= f.fields_for(:movie, include_id: false) do |m| %>
+        <%= m.hidden_field :director_id %>
+        <%= m.label :title %>
+        <%= m.text_field :title %>
+        <%= m.label :release_date %>
+        <%= m.date_field :release_date %>
+        <%= m.label :watched_day %>
+        <%= m.date_field :watched_day %>
+    <% end %>
+  <%= f.submit 'Save' %>
+<% end %>
